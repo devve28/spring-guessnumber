@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблица лидеров</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Таблица лидеров</h1>
+<div>
+    <a th:href="@{/leaderboard(sortBy='time')}">Сортировать по времени</a> |
+    <a th:href="@{/leaderboard(sortBy='attempts')}">Сортировать по попыткам</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Время (сек)</th>
+        <th>Подсказки</th>
+        <th>Попытки</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${leaderboard}">
+        <td th:text="${entry.username}"></td>
+        <td th:text="${entry.timeTaken}"></td>
+        <td th:text="${entry.hintsUsed}"></td>
+        <td th:text="${entry.attempts}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/game">Новая игра</a>
+<a href="/login">Выйти</a>
+</body>
+</html>
